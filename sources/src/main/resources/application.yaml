@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: VAST-Playground
+  datasource:
+    url: jdbc:postgresql://db:5432/playground_db
+    username: playground_user
+    password: playground_password
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+  jpa:
+    hibernate:
+      ddl-auto: update   # dev convenience; prefer Flyway in prod
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false
+  sql:
+    init:
+      mode: never        # we'll rely on ddl-auto for this demo
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
